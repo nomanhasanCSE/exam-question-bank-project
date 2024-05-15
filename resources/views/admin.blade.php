@@ -1,5 +1,12 @@
 @extends('layouts.masterLayout')
 @section('content')
+
+    @if(session('success'))
+        <div class="alert alert-success text-center w-50 mx-auto">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div>
         <h1 class="my-3 text-center"> Exam Question Bank</h1>
     <form method="post" action="{{route('admin.store')}}">
