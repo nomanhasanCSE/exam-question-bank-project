@@ -56,7 +56,7 @@ class AdminController extends Controller
             }
 
         }
-
+        return redirect()->route('admin.create')->with('success', 'Exam and questions saved successfully!');
     }
 
 //public function store(){
