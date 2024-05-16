@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,23 +25,24 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
-Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
-Route::post('/student', [StudentController::class, 'index'])->name('student.index');
+//Route::get('/admin/create', [HomeController::class, 'create'])->name('admin.dashboard');
 
-/* <?php
-
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\StudentController;
-use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('home');
+Route::controller(AdminController::class)->group(function(){
+    Route::get('/admin/create',  'create')->name('admin.create');
+    Route::post('/admin/store',  'store')->name('admin.store');
 });
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
-Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
 
-Route::post('/student', [StudentController::class, 'index'])->name('student.index');
-Route::post('/student/store', [StudentController::class, 'store'])->name('student.store');
-*/
+Route::controller(StudentController::class)->group(function(){
+    Route::get('/dashboard','index')->name('dashboard');
+    Route::get('/exam/{id}/questions', 'showQuestions')->name('exam.questions');
+    Route::post('/exam/{id}/response', 'storeResponse')->name('exam.response.store');
+    Route::get('/exam/{id}/total-score', 'calculateTotalScore')->name('exam.total-score');
+    Route::get('/exam/{id}/total-score/show', 'showTotalScore')->name('exam.total-score.show');
+
+});
+
+
+
+//Route::post('/question/{id}/submit', [StudentController::class, 'submitQuestion'])->name('question.submit');
+//Route::get('/result', [StudentController::class, 'showResult'])->name('quiz.result');
+//Route::get('/reset-quiz', [StudentController::class, 'resetQuiz'])->name('quiz.reset');

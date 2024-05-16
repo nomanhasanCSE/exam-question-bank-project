@@ -10,7 +10,7 @@ class AdminController extends Controller
         return view('admin');
     }
     public function create(){
-       return view('admin');
+       return view('admin.dashboard');
    }
 
     public function store(Request $request){
