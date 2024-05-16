@@ -7,9 +7,15 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-   public function index(){
+   public function index()
+   {
 
-       return view ('admin.dashboard');
+       return view('admin.dashboard');
+   }
+   public function create(){
+
+        return view ('admin.dashboard');
+
 //       if(Auth::id()){
 //           $userType =Auth()->user()->usertype;
 //           if($userType=='user'){

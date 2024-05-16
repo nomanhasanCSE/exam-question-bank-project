@@ -22,8 +22,15 @@
             </ul>
             <form class="d-flex" role="search">
                  <div class="">
-                    <a href="{{route('student.index')}}" class="btn btn-outline-success me-2">Student</a>
-                    <a href="{{route('admin.create')}}" class="btn btn-outline-success">admin</a>
+{{--                    <a href="{{route('student.index')}}" class="btn btn-outline-success me-2">Student</a>--}}
+                     <form method="POST" action="{{ route('logout') }}">
+                         @csrf
+
+                         <x-responsive-nav-link class="btn btn-outline-success" :href="route('logout')"
+                                                onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                             {{ __('Log Out') }}
+                         </x-responsive-nav-link>
                 </div>
             </form>
         </div>
