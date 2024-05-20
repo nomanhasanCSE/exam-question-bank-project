@@ -14,7 +14,12 @@ class StudentController extends Controller
 
     public function showQuestions($id)
     {
-        $questions = DB::table('questions')->where('exam_id', $id)->get();
+        $questions = DB::table('questions')
+            ->where('exam_id', $id)
+            ->orderBy('id')
+            ->cursorPaginate(3);
+//            ->fragment('users');
+//        ->appends(['test'=> 'abc', 'fruits'=>'mango']);
         return view('question', compact('questions', 'id'));
     }
     public function storeResponse(Request $request, $id)

@@ -45,6 +45,7 @@
                    <th>Option D</th>
                    <th>Answer</th>
                {{--                <th></th> </tr>--}}
+
                </thead>
                <tbody id="questionRows">
                </tbody>
@@ -69,6 +70,7 @@
                 newRow.append($('<td><input type="text" class="form-control" name="option_d[]" required></td>'));
                 newRow.append($('<td><select class="form-select" name="answer[]" required><option value="">Select Answer</option><option value="a">A</option><option value="b">B</option><option value="c">C</option><option value="d">D</option></select></td>'));
                 // newRow.append($('<td><button type="button" class="btn btn-sm btn-danger removeRow">Remove</button></td>'));
+                newRow.append('</tr>');
                 $('#questionRows').append(newRow);
             });
 
