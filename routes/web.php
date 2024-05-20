@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PractiseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,15 @@ Route::controller(StudentController::class)->group(function(){
     Route::post('/exam/{id}/response', 'storeResponse')->name('exam.response.store');
     Route::get('/exam/{id}/total-score', 'calculateTotalScore')->name('exam.total-score');
     Route::get('/exam/{id}/total-score/show', 'showTotalScore')->name('exam.total-score.show');
+
+});
+Route::controller(PractiseController::class)->group(function(){
+    Route::get('/query-practise/add','add')->name('query.practise.add');
+    Route::get('/query-practise','index')->name('query.practise');
+//    Route::get('/exam/{id}/questions', 'showQuestions')->name('exam.questions');
+//    Route::post('/exam/{id}/response', 'storeResponse')->name('exam.response.store');
+//    Route::get('/exam/{id}/total-score', 'calculateTotalScore')->name('exam.total-score');
+//    Route::get('/exam/{id}/total-score/show', 'showTotalScore')->name('exam.total-score.show');
 
 });
 

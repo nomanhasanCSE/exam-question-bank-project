@@ -30,7 +30,11 @@
         </div>
     </div>
     @endforeach
-        <button type="submit" class="btn btn-success">Submit</button>
+{{--        <div class="my-3 text-center"> {{$questions->links('cursorPagination::bootstrap-5')}} </div>--}}
+        <div class="my-3 text-center"> {{$questions->links()}}</div>
+{{--        <div> Total pages: {{$questions->total()}}</div>--}}
+{{--        <div> Current page: {{$questions->currentPage()}}</div>--}}
+        <button type="submit" class="btn btn-success ">Submit</button>
     </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
